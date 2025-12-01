@@ -58,7 +58,7 @@ INSERT INTO usuarios (nome, email, senha) VALUES
 ('Daniel Costa', 'daniel.costa@email.com', SHA2('senha123', 256)),
 ('Maria Barbosa', 'maria.barbosa@email.com', SHA2('cozinha@123', 256)),
 ('Lucas Andrade', 'lucas.andrade@email.com', SHA2('123456', 256));
-a
+
 -- CONTAS
 INSERT INTO contas (usuario_id, nome, saldo_inicial, tipo) VALUES
 (1, 'Conta Corrente - Nubank', 2500.00, 'corrente'),
@@ -97,16 +97,64 @@ INSERT INTO transacoes (usuario_id, conta_id, categoria_id, tipo, descricao, val
 (3, 6, 8, 'despesa', 'Curso de IA online', 250.00, '2025-11-02'),
 (3, 6, 9, 'despesa', 'Cinema com amigos', 60.00, '2025-11-03');
 
-SELECT 
-id AS codigo_usuario,
-nome AS nome_completo, 
-email AS email_principal,
-data_cadastro AS criado_em, 
-FROM USUARIOS,
-ORDER BY nome DESC, 
 
 SELECT 
-u.id AS usuario_id,
-u.nome AS nome_usuario,
-c.id AS conta_id, 
-c.nome AS nome_conta, 
+  id AS codigo_usuario,
+  nome AS nome_completo, 
+  email AS email_principal,
+  data_cadastro AS criado_em
+FROM USUARIO
+ORDER BY nome DESC ;
+
+SELECT 
+  u.id AS usuario_id,
+  u.nome AS nome_usuario,
+  c.id AS conta_id, 
+  c.nome AS nome_conta, 
+  c.saldo_inicial,
+  c.tipo
+FROM usuario u
+JOIN contas c 
+  ON c.usuarios_id = u.id;
+  
+SELECT
+    id,
+    usuario_id,
+    nome, 
+    saldo_inicial,
+    tipo 
+from contas 
+  where usuario_id = 1;
+  
+SELECT 
+   id,
+   nome, 
+   email, 
+FROM usuario
+where email = 'socorro@gmail.com'
+SELECT
+  id,
+  descricao,
+  valor
+  FROM transacoes
+  WHERE valor > 100.00;
+SELECT
+  id,
+  descricao,
+  valor
+  FROM transacoes
+  WHERE valor <= 50.00; 
+  
+  SELECT
+  id,
+  descricao,
+  valor
+  FROM transacoes
+  WHERE valor between 50 AND 500;
+
+SELECT 
+id,
+descricao,
+valor
+FROM transacoes
+WHERE valor <> 250.00; 
