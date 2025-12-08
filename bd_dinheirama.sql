@@ -128,6 +128,25 @@ SELECT
 FROM contas
 WHERE usuario_id = 2; 
 
+CREATE VIEW vw_usuarios_contas AS 
+SELECT 
+  t.id AS transacao_id.
+  u.nome as usuario,
+  c.nome AS contas,
+  c.tipo,
+  t.valor,
+  t.descricao,
+  t.data_transacao,
+  t.data_registro, 
+  FROM transacoes t
+  JOIN usuarios u 
+  JOIN contas c 
+  JOIN categorias cat 
+  
+FROM usuarios u
+JOIN contas c ON c.usuario_id * u.id;
+
+SELECT * FROM vw_usuarios_contas;
 
 
 
