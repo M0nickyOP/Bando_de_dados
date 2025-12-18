@@ -80,4 +80,7 @@ WHERE data_agend = '2025-08-01';
   SELECT p.nome as nome_pet, s.tipo as servico_pet, s.preco as preco_servico
   FROM pets p 
   JOIN servicos s ON s.serv_pet_id = p.id_pet;
-  
+
+ SELECT cliente_id,nome, especie 
+  FROM pets
+  WHERE cliente_id = 3;
